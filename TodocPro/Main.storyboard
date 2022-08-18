@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bcS-4S-3qR">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Todos-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ViewController" customModule="TodocPro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="naH-cX-UM9">
+                                <rect key="frame" x="0.0" y="98" width="414" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UKh-Gq-flz">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoCollectionViewCell" id="X3V-t8-gDm">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xuh-tl-3Cq">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rro-yk-Vmz" userLabel="NoTodosStackView">
+                                <rect key="frame" x="79.5" y="421.5" width="255" height="53"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no todos yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vg2-GY-rDv">
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="29"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click the &quot;+&quot; button to create one." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zld-U5-5ii">
+                                        <rect key="frame" x="0.0" y="37" width="255" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="naH-cX-UM9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1aM-wC-Wy5"/>
+                            <constraint firstItem="naH-cX-UM9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="RJU-Rl-QQf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="naH-cX-UM9" secondAttribute="bottom" id="XqD-1j-c4h"/>
+                            <constraint firstItem="rro-yk-Vmz" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="opo-XU-1ik"/>
+                            <constraint firstItem="rro-yk-Vmz" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="y52-h6-dnt"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="naH-cX-UM9" secondAttribute="trailing" id="y8z-d9-zh3"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="My Todos" id="SS3-er-n4n"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="noTodosStackView" destination="rro-yk-Vmz" id="fr0-r8-feF"/>
+                        <outlet property="todosCollectionView" destination="naH-cX-UM9" id="15s-gk-LvP"/>
+                        <segue destination="iE9-mR-3IH" kind="show" identifier="AboutTodocSegue" id="GnZ-dy-yIH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668" y="100"/>
+        </scene>
+        <!--About Todoc Pro-->
+        <scene sceneID="cRX-Dt-4aR">
+            <objects>
+                <viewController id="iE9-mR-3IH" customClass="AboutTodocViewController" customModule="TodocPro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gJH-Ap-vgT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwy-e9-Wtr">
+                                <rect key="frame" x="20" y="140" width="374" height="67"/>
+                                <string key="text">Todoc Pro is a next-generation task manager app.
+The mission of our app, is to help you manage your tasks with our simple yet prowerful user interface and never miss a thing again.</string>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQf-3h-mB1">
+                                <rect key="frame" x="20" y="227" width="374" height="84"/>
+                                <string key="text">This is product is part of the Voyiadjis PRO App Pack. That said, only members of the Voyiadjis Finance Group (VFG, in short) are allowed to use it. Anyone that's not in the VFG and uses this app is considered ILLEGAL and can be charged with 10 (ten) years jail time.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQU-q6-1XB">
+                                <rect key="frame" x="20" y="331" width="374" height="117"/>
+                                <string key="text">The following message is for those who are not members of the VFG, from Voyiadjis (CEO of Voyiadjis Software):
+You little piece of shit. You better close and remove the app once for ever from your shitty phone and forget it even exists. I don't know how you got access to it but I'm gonna find the little rata and I'm gonna make him pay. Get ready you little fuck. 👿</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Get-eX-eat"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gQU-q6-1XB" firstAttribute="top" secondItem="XQf-3h-mB1" secondAttribute="bottom" constant="20" id="1Az-dm-43A"/>
+                            <constraint firstItem="XQf-3h-mB1" firstAttribute="top" secondItem="Gwy-e9-Wtr" secondAttribute="bottom" constant="20" id="5ND-5g-PEx"/>
+                            <constraint firstItem="Gwy-e9-Wtr" firstAttribute="top" secondItem="Get-eX-eat" secondAttribute="top" id="I8N-gU-6nA"/>
+                            <constraint firstItem="Get-eX-eat" firstAttribute="trailing" secondItem="Gwy-e9-Wtr" secondAttribute="trailing" constant="20" id="Mq6-BV-mA8"/>
+                            <constraint firstItem="Gwy-e9-Wtr" firstAttribute="leading" secondItem="Get-eX-eat" secondAttribute="leading" constant="20" id="Rhz-ZZ-DPJ"/>
+                            <constraint firstItem="gQU-q6-1XB" firstAttribute="leading" secondItem="Get-eX-eat" secondAttribute="leading" constant="20" id="dhB-yn-dJo"/>
+                            <constraint firstItem="Get-eX-eat" firstAttribute="trailing" secondItem="XQf-3h-mB1" secondAttribute="trailing" constant="20" id="lWK-Qb-Hah"/>
+                            <constraint firstItem="Get-eX-eat" firstAttribute="trailing" secondItem="gQU-q6-1XB" secondAttribute="trailing" constant="20" id="o1Z-r7-2d7"/>
+                            <constraint firstItem="XQf-3h-mB1" firstAttribute="leading" secondItem="Get-eX-eat" secondAttribute="leading" constant="20" id="tpY-nC-wNT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="About Todoc Pro" id="Qq0-Mf-T9U"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCH-th-1Yf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1643" y="100"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jYQ-ZN-0qH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bcS-4S-3qR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Bz9-n2-8Mi">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="9vY-hs-5dK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XLH-zc-bFf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="100"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
