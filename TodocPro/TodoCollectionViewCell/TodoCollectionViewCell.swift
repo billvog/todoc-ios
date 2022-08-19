@@ -9,10 +9,8 @@ import UIKit
 
 class TodoCollectionViewCell: UICollectionViewCell {
 
-	@IBOutlet weak var todoText: UILabel!
-	@IBOutlet weak var deleteButton: UIButton!
 	var todoId: Int!
-	var deleteCallback: ((Int) -> Void)!
+	@IBOutlet weak var todoText: UILabel!
 	
 	static let identifier = "TodoCollectionViewCell"
 	static func nib() -> UINib {
@@ -23,22 +21,9 @@ class TodoCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 	
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		
-		self.contentView.addConstraint(
-			NSLayoutConstraint(item: deleteButton!, attribute: .leading, relatedBy: .equal, toItem: todoText, attribute: .trailing, multiplier: 1, constant: 10)
-		)
-	}
-	
-	func configure(withTodo todoText: String, todoId: Int, deleteCallback: @escaping (Int) -> Void) {
-		self.todoText.text = todoText
+	func configure(withTodoId todoId: Int, todoText: String) {
 		self.todoId = todoId
-		self.deleteCallback = deleteCallback
-	}
-	
-	@IBAction func didTapDeleteButton(_ sender: Any) {
-		deleteCallback(self.todoId)
+		self.todoText.text = todoText
 	}
 }
 

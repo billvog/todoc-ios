@@ -14,7 +14,7 @@ class ViewController: UIViewController {
 	
 	var todoList: [String] = [
 		"Buy milk", "Feed the cat", "Buy Todoc Pro", "Rob a fucking bank",
-		"Rate Todoc for being the greatest task-manager app",
+		"Rate Todoc for being the greatest task-manager app for pros",
 	]
 	
 	override func viewDidLoad() {
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
 		self.present(alert, animated: true)
 	}
 	
-	private func didTapRemoveTodoButton(withIndex index: Int) {
+	private func didTapRemoveTodoButton(forTodoAtIndex index: Int) {
 		let alert = UIAlertController(title: "Delete \"\(todoList[index])\" todo?", message: "Are you sure you want to delete this todo? After tapping \"Delete\" there is no comeback.", preferredStyle: .actionSheet)
 		
 		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -92,7 +92,33 @@ class ViewController: UIViewController {
 	}
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {}
+extension ViewController: UICollectionViewDelegate {
+	func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+		return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] (action) -> UIMenu in
+			let index = indexPath.item
+			
+			let deleteAction = UIAction(
+				title: "Delete",
+				image: .init(systemName: "trash"),
+				identifier: nil,
+				discoverabilityTitle: nil,
+				attributes: .destructive,
+				state: .off
+			) { [weak self] _ in
+				self?.didTapRemoveTodoButton(forTodoAtIndex: index)
+			}
+			
+			return UIMenu(
+				title: "What do you want to do with this Todo?",
+				image: nil,
+				identifier: nil,
+				options: .displayInline,
+				children: [deleteAction]
+			)
+		}
+	}
+}
+
 extension ViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return todoList.count
@@ -102,9 +128,7 @@ extension ViewController: UICollectionViewDataSource {
 		let index = indexPath.item
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCollectionViewCell.identifier, for: indexPath) as! TodoCollectionViewCell
 		
-		cell.configure(withTodo: todoList[index], todoId: index) { index in
-			self.didTapRemoveTodoButton(withIndex: index)
-		}
+		cell.configure(withTodoId: index, todoText: todoList[index])
 		
 		return cell
 	}
@@ -113,3 +137,5 @@ extension ViewController: UICollectionViewDataSource {
 		return CGSize(width: collectionView.frame.width, height: 50)
 	}
 }
+
+extension ViewController: UICollectionViewDelegateFlowLayout {}
