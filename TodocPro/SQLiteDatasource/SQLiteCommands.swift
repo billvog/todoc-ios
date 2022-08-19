@@ -61,6 +61,12 @@ extension SQLiteCommands {
 		
 		do {
 			let todo = todos.filter(todosExpressions.id == todoId).limit(1)
+			
+			// check if a todo with this id exists
+			if ((try database.scalar(todo.count)) <= 0) {
+				return false
+			}
+				
 			try database.run(todo.delete())
 			return true
 		} catch {
@@ -77,6 +83,12 @@ extension SQLiteCommands {
 		
 		do {
 			let todo = todos.filter(todosExpressions.id == todoId).limit(1)
+			
+			// check if a todo with this id exists
+			if ((try database.scalar(todo.count)) <= 0) {
+				return nil
+			}
+			
 			try database.run(todo.update(todosExpressions.shortText <- newTodoValues.shortText))
 			return Todo(id: todoId, shortText: newTodoValues.shortText)
 		}

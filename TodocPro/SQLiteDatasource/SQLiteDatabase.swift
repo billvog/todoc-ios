@@ -16,6 +16,7 @@ class SQLiteDatabase {
 		do {
 			let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 			let fileUrl = documentDirectory.appendingPathComponent("TodocProDB").appendingPathExtension("sqlite")
+			print("Creating/opening database at: \(fileUrl.path)")
 			database = try Connection(fileUrl.path)
 		}
 		catch {

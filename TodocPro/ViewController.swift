@@ -98,6 +98,7 @@ extension ViewController {
 	private func getAllTodos() {
 		let fetchedTodos = SQLiteCommands.getAllTodos()
 		if (fetchedTodos == nil) {
+			showError(withTitle: "Task Failed", message: "Todoc encountered an error trying to fetch todos.")
 			return
 		}
 		
@@ -108,6 +109,7 @@ extension ViewController {
 	private func addTodo(withModel todo: Todo) {
 		let newTodo = SQLiteCommands.createTodo(withTodoModel: todo)
 		if (newTodo == nil) {
+			showError(withTitle: "Task Failed", message: "Todoc encountered an error trying to create a todo.")
 			return
 		}
 		
@@ -118,6 +120,7 @@ extension ViewController {
 	private func removeTodo(withId todoId: Int64) {
 		let removedTodo = SQLiteCommands.removeTodo(withId: todoId)
 		if (removedTodo == nil || removedTodo == false) {
+			showError(withTitle: "Task Failed", message: "Todoc encountered an error trying to remove a todo.")
 			return
 		}
 		
@@ -143,7 +146,7 @@ extension ViewController: UICollectionViewDelegate {
 			}
 			
 			return UIMenu(
-				title: "What do you want to do with this Todo?",
+				title: "What do you want to do with this todo?",
 				image: nil,
 				identifier: nil,
 				options: .displayInline,

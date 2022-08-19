@@ -20,6 +20,7 @@
 		71F3B82528AE56EA00495DD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3B82428AE56EA00495DD3 /* ViewController.swift */; };
 		71F3B82A28AE56EB00495DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F3B82928AE56EB00495DD3 /* Assets.xcassets */; };
 		71F3B82D28AE56EB00495DD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F3B82B28AE56EB00495DD3 /* LaunchScreen.storyboard */; };
+		71FE522F28AFB1660034AD88 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE522E28AFB1660034AD88 /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		71F3B82928AE56EB00495DD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71F3B82C28AE56EB00495DD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71F3B82E28AE56EB00495DD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71FE522E28AFB1660034AD88 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		822A750E4B0445AFFA1FC469 /* Pods-TodocPro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodocPro.debug.xcconfig"; path = "Target Support Files/Pods-TodocPro/Pods-TodocPro.debug.xcconfig"; sourceTree = "<group>"; };
 		A344ABD31867ADC1AE7FF5EF /* Pods_TodocPro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodocPro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 			children = (
 				7160D2D928AF9B70003FCFCC /* SQLiteDatasource */,
 				7160D2D628AF9A77003FCFCC /* Model */,
+				71FE522D28AFB1500034AD88 /* Extensions */,
 				71F3B82028AE56EA00495DD3 /* AppDelegate.swift */,
 				71F3B82228AE56EA00495DD3 /* SceneDelegate.swift */,
 				71F3B82428AE56EA00495DD3 /* ViewController.swift */,
@@ -123,6 +126,14 @@
 				71F3B82E28AE56EB00495DD3 /* Info.plist */,
 			);
 			path = TodocPro;
+			sourceTree = "<group>";
+		};
+		71FE522D28AFB1500034AD88 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				71FE522E28AFB1660034AD88 /* UIViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BE7F8C13E0728C1FCCF6E623 /* Frameworks */ = {
@@ -251,6 +262,7 @@
 			files = (
 				71A27D8028AE5F2D00419740 /* TodoCollectionViewCell.swift in Sources */,
 				7160D2D828AF9A83003FCFCC /* Todo.swift in Sources */,
+				71FE522F28AFB1660034AD88 /* UIViewController.swift in Sources */,
 				71F3B82528AE56EA00495DD3 /* ViewController.swift in Sources */,
 				7160D2DD28AF9C85003FCFCC /* SQLiteCommands.swift in Sources */,
 				71F3B82128AE56EA00495DD3 /* AppDelegate.swift in Sources */,
