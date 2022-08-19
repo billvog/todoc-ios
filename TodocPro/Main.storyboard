@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="naH-cX-UM9">
-                                <rect key="frame" x="0.0" y="98" width="414" height="715"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="naH-cX-UM9">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UKh-Gq-flz">
                                     <size key="itemSize" width="128" height="128"/>
@@ -59,7 +59,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="naH-cX-UM9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1aM-wC-Wy5"/>
-                            <constraint firstItem="naH-cX-UM9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="RJU-Rl-QQf"/>
+                            <constraint firstItem="naH-cX-UM9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="RJU-Rl-QQf"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="naH-cX-UM9" secondAttribute="bottom" id="XqD-1j-c4h"/>
                             <constraint firstItem="rro-yk-Vmz" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="opo-XU-1ik"/>
                             <constraint firstItem="rro-yk-Vmz" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="y52-h6-dnt"/>
@@ -67,7 +67,20 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="My Todos" id="SS3-er-n4n"/>
+                    <navigationItem key="navigationItem" title="My Todos" id="SS3-er-n4n">
+                        <rightBarButtonItems>
+                            <barButtonItem image="plus" catalog="system" id="LBo-33-5gk" userLabel="AddTodoBarButtonItem">
+                                <connections>
+                                    <action selector="didTapAddTodoButton:" destination="Y6W-OH-hqX" id="QxH-g0-sbS"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="info.circle" catalog="system" id="gA1-xb-0Tp" userLabel="InfoBarButtonItem">
+                                <connections>
+                                    <action selector="didTapInfoButton:" destination="Y6W-OH-hqX" id="tuC-DX-ahS"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="noTodosStackView" destination="rro-yk-Vmz" id="fr0-r8-feF"/>
@@ -151,6 +164,8 @@ You little piece of shit. You better close and remove the app once for ever from
         </scene>
     </scenes>
     <resources>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

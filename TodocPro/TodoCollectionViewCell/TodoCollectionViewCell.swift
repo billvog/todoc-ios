@@ -9,7 +9,6 @@ import UIKit
 
 class TodoCollectionViewCell: UICollectionViewCell {
 
-	var todoId: Int!
 	@IBOutlet weak var todoText: UILabel!
 	
 	static let identifier = "TodoCollectionViewCell"
@@ -21,9 +20,8 @@ class TodoCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 	
-	func configure(withTodoId todoId: Int, todoText: String) {
-		self.todoId = todoId
-		self.todoText.text = todoText
+	func configure(withTodo todo: Todo) {
+		self.todoText.text = todo.shortText
 	}
 }
 
