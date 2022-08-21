@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SQLite
 
 struct Todo {
-	let id: Int64
+	let id: String
 	var shortText: String
 	var done: Bool
+	let createdAt: Date
 	
 	var onDoneChanged: ((Bool) -> Void)!
 }
