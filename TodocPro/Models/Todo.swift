@@ -9,5 +9,8 @@ import Foundation
 
 struct Todo {
 	let id: Int64
-	let shortText: String
+	var shortText: String
+	var done: Bool
+	
+	var onDoneChanged: ((Bool) -> Void)!
 }

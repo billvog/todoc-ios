@@ -13,6 +13,7 @@ class SQLiteCommands {
 	struct todosExpressions {
 		static let id = Expression<Int64>("id")
 		static let shortText = Expression<String>("short_text")
+		static let done = Expression<Bool>("done")
 	}
 	
 	static func createTables() {
@@ -23,12 +24,14 @@ class SQLiteCommands {
 		
 		// Create todos table
 		do {
+			// try database.run(todos.drop(ifExists: true))
 			try database.run(todos.create(ifNotExists: true, block: { table in
 				table.column(todosExpressions.id, primaryKey: true)
 				table.column(todosExpressions.shortText)
+				table.column(todosExpressions.done, defaultValue: false)
 			}))
 		} catch {
-			print("Todos table already exist: \(error)")
+			print("\"todo\" table already exist: \(error)")
 		}
 	}
 }
@@ -46,7 +49,7 @@ extension SQLiteCommands {
 				todos.insert(todosExpressions.shortText <- todo.shortText)
 			)
 			
-			return Todo(id: todoId, shortText: todo.shortText)
+			return Todo(id: todoId, shortText: todo.shortText, done: todo.done)
 		} catch {
 			print("Error creating todo: \(error)")
 			return nil
@@ -89,8 +92,12 @@ extension SQLiteCommands {
 				return nil
 			}
 			
-			try database.run(todo.update(todosExpressions.shortText <- newTodoValues.shortText))
-			return Todo(id: todoId, shortText: newTodoValues.shortText)
+			try database.run(todo.update(
+				todosExpressions.shortText <- newTodoValues.shortText,
+				todosExpressions.done <- newTodoValues.done
+			))
+			
+			return Todo(id: todoId, shortText: newTodoValues.shortText, done: newTodoValues.done)
 		}
 		catch {
 			print("Error updating todo: \(error)")
@@ -111,7 +118,8 @@ extension SQLiteCommands {
 			for todo in try database.prepare(todos) {
 				let _todo = Todo(
 					id: todo[todosExpressions.id],
-					shortText: todo[todosExpressions.shortText]
+					shortText: todo[todosExpressions.shortText],
+					done: todo[todosExpressions.done]
 				)
 				
 				todosArray.append(_todo)

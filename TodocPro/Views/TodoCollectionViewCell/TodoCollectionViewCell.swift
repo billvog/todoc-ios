@@ -9,7 +9,9 @@ import UIKit
 
 class TodoCollectionViewCell: UICollectionViewCell {
 
+	var todo: Todo!
 	@IBOutlet weak var todoText: UILabel!
+	@IBOutlet weak var isTodoDoneButton: UIButton!
 	
 	static let identifier = "TodoCollectionViewCell"
 	static func nib() -> UINib {
@@ -18,10 +20,24 @@ class TodoCollectionViewCell: UICollectionViewCell {
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
+		self.isTodoDoneButton.addTarget(self, action: #selector(didTapDoneButton), for: .touchUpInside)
     }
 	
-	func configure(withTodo todo: Todo) {
-		self.todoText.text = todo.shortText
+	func configure(withTodo _todo: Todo) {
+		self.todo = _todo
+		self.setTodoDone(isDone: todo.done)
+	}
+	
+	@objc private func didTapDoneButton() {
+		todo.onDoneChanged(!todo.done)
+	}
+	
+	private func setTodoDone(isDone: Bool) {
+		todoText.attributedText = NSAttributedString(string: todo.shortText).withStrikeThrough(isDone ? 1 : 0)
+		isTodoDoneButton.setImage(
+			.init(systemName: isDone ? "circle.inset.filled" : "circle"),
+			for: .normal
+		)
 	}
 }
 

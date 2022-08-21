@@ -17,27 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="naH-cX-UM9">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UKh-Gq-flz">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoCollectionViewCell" id="X3V-t8-gDm">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xuh-tl-3Cq">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rro-yk-Vmz" userLabel="NoTodosStackView">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rro-yk-Vmz" userLabel="No Todos Stack View">
                                 <rect key="frame" x="79.5" y="421.5" width="255" height="53"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no todos yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vg2-GY-rDv">
@@ -54,29 +34,92 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9f-hH-JC5">
+                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="naH-cX-UM9">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UKh-Gq-flz">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoCollectionViewCell" id="X3V-t8-gDm">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xuh-tl-3Cq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYk-Xg-Ulz" userLabel="Tasks Left Count View">
+                                        <rect key="frame" x="156.5" y="689" width="101.5" height="27"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x tasks left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNh-jx-jxr">
+                                                <rect key="frame" x="10" y="5" width="81.5" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                        <constraints>
+                                            <constraint firstItem="bNh-jx-jxr" firstAttribute="top" secondItem="YYk-Xg-Ulz" secondAttribute="top" constant="5" id="4DC-q1-Mu3"/>
+                                            <constraint firstItem="bNh-jx-jxr" firstAttribute="leading" secondItem="YYk-Xg-Ulz" secondAttribute="leading" constant="10" id="DlW-1z-G8t"/>
+                                            <constraint firstAttribute="trailing" secondItem="bNh-jx-jxr" secondAttribute="trailing" constant="10" id="iGe-w7-We6"/>
+                                            <constraint firstAttribute="bottom" secondItem="bNh-jx-jxr" secondAttribute="bottom" constant="5" id="j8v-dM-JaN"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="naH-cX-UM9" secondAttribute="trailing" id="AKY-dA-N1K"/>
+                                    <constraint firstItem="naH-cX-UM9" firstAttribute="top" secondItem="b9f-hH-JC5" secondAttribute="top" id="Ph0-Md-dgq"/>
+                                    <constraint firstAttribute="bottom" secondItem="YYk-Xg-Ulz" secondAttribute="bottom" constant="40" id="SKK-yJ-2tm"/>
+                                    <constraint firstItem="YYk-Xg-Ulz" firstAttribute="centerX" secondItem="b9f-hH-JC5" secondAttribute="centerX" id="VVy-bG-AOn"/>
+                                    <constraint firstItem="naH-cX-UM9" firstAttribute="leading" secondItem="b9f-hH-JC5" secondAttribute="leading" id="aWC-Ms-PW1"/>
+                                    <constraint firstAttribute="bottom" secondItem="naH-cX-UM9" secondAttribute="bottom" id="dy0-td-cAe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="naH-cX-UM9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1aM-wC-Wy5"/>
-                            <constraint firstItem="naH-cX-UM9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="RJU-Rl-QQf"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="naH-cX-UM9" secondAttribute="bottom" id="XqD-1j-c4h"/>
+                            <constraint firstAttribute="bottom" secondItem="b9f-hH-JC5" secondAttribute="bottom" id="luh-vo-cG2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="b9f-hH-JC5" secondAttribute="trailing" id="m3m-e8-vut"/>
                             <constraint firstItem="rro-yk-Vmz" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="opo-XU-1ik"/>
+                            <constraint firstItem="b9f-hH-JC5" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="vsq-x9-f30"/>
                             <constraint firstItem="rro-yk-Vmz" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="y52-h6-dnt"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="naH-cX-UM9" secondAttribute="trailing" id="y8z-d9-zh3"/>
+                            <constraint firstItem="b9f-hH-JC5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yw8-bi-FVe"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="My Todos" id="SS3-er-n4n">
+                        <barButtonItem key="leftBarButtonItem" image="info.circle" catalog="system" id="gA1-xb-0Tp" userLabel="InfoBarButtonItem">
+                            <connections>
+                                <action selector="didTapInfoButton:" destination="Y6W-OH-hqX" id="tuC-DX-ahS"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
+                            <barButtonItem title="RemoveDoneTodosBarButtonItem" image="trash" catalog="system" id="6ec-L9-WjB">
+                                <connections>
+                                    <action selector="didTapRemoveDoneTodosButton:" destination="Y6W-OH-hqX" id="buD-IR-nZF"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="plus" catalog="system" id="LBo-33-5gk" userLabel="AddTodoBarButtonItem">
                                 <connections>
                                     <action selector="didTapAddTodoButton:" destination="Y6W-OH-hqX" id="QxH-g0-sbS"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="info.circle" catalog="system" id="gA1-xb-0Tp" userLabel="InfoBarButtonItem">
-                                <connections>
-                                    <action selector="didTapInfoButton:" destination="Y6W-OH-hqX" id="tuC-DX-ahS"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -84,13 +127,16 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="noTodosStackView" destination="rro-yk-Vmz" id="fr0-r8-feF"/>
+                        <outlet property="removeDoneTodosBarButtonItem" destination="6ec-L9-WjB" id="qae-yD-w3Q"/>
+                        <outlet property="tasksLeftLabel" destination="bNh-jx-jxr" id="Nyu-Wu-ZZP"/>
                         <outlet property="todosCollectionView" destination="naH-cX-UM9" id="15s-gk-LvP"/>
+                        <outlet property="withTodosView" destination="b9f-hH-JC5" id="8eF-tX-QhV"/>
                         <segue destination="iE9-mR-3IH" kind="show" identifier="AboutTodocSegue" id="GnZ-dy-yIH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="100"/>
+            <point key="canvasLocation" x="666.66666666666674" y="99.776785714285708"/>
         </scene>
         <!--About Todoc Pro-->
         <scene sceneID="cRX-Dt-4aR">
@@ -166,11 +212,15 @@ You little piece of shit. You better close and remove the app once for ever from
     <resources>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
