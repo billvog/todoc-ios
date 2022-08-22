@@ -14,6 +14,8 @@ class SQLiteCommands {
 		static let id = Expression<String>("id")
 		static let shortText = Expression<String>("short_text")
 		static let done = Expression<Bool>("done")
+		static let notify = Expression<Bool>("notify")
+		static let notifyDateTime = Expression<Date>("notify_datetime")
 		static let createdAt = Expression<Date>("created_at")
 	}
 	
@@ -25,11 +27,13 @@ class SQLiteCommands {
 		
 		// Create todos table
 		do {
-			// try database.run(todos.drop(ifExists: true))
+			//try database.run(todos.drop(ifExists: true))
 			try database.run(todos.create(ifNotExists: true, block: { table in
 				table.column(todosExpressions.id, primaryKey: true)
 				table.column(todosExpressions.shortText)
 				table.column(todosExpressions.done, defaultValue: false)
+				table.column(todosExpressions.notify, defaultValue: false)
+				table.column(todosExpressions.notifyDateTime)
 				table.column(todosExpressions.createdAt)
 			}))
 		} catch {
@@ -46,6 +50,8 @@ extension SQLiteCommands {
 			id: row[todosExpressions.id],
 			shortText: row[todosExpressions.shortText],
 			done: row[todosExpressions.done],
+			notify: row[todosExpressions.notify],
+			notifyDateTime: row[todosExpressions.notifyDateTime],
 			createdAt: row[todosExpressions.createdAt]
 		)
 	}
@@ -85,6 +91,8 @@ extension SQLiteCommands {
 				todos.insert(
 					todosExpressions.id <- todoId,
 					todosExpressions.shortText <- todo.shortText,
+					todosExpressions.notify <- todo.notify,
+					todosExpressions.notifyDateTime <- todo.notifyDateTime,
 					todosExpressions.createdAt <- Date.now
 				)
 			)
@@ -137,13 +145,17 @@ extension SQLiteCommands {
 			
 			try database.run(todo.update(
 				todosExpressions.shortText <- newTodoValues.shortText,
-				todosExpressions.done <- newTodoValues.done
+				todosExpressions.done <- newTodoValues.done,
+				todosExpressions.notify <- newTodoValues.notify,
+				todosExpressions.notifyDateTime <- newTodoValues.notifyDateTime
 			))
 			
 			return Todo(
 				id: todoId,
 				shortText: newTodoValues.shortText,
 				done: newTodoValues.done,
+				notify: newTodoValues.notify,
+				notifyDateTime: newTodoValues.notifyDateTime,
 				createdAt: oldTodo.createdAt
 			)
 		}

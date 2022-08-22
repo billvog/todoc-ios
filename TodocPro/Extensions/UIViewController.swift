@@ -15,4 +15,16 @@ extension UIViewController {
 		alertController.addAction(okAction)
 		present(alertController, animated: true, completion: nil)
 	}
+	
+	
+	/// Allow the user to click outside of a text field and dismiss the keyboard.
+	func dismissKeyboard() {
+	   let tap: UITapGestureRecognizer = UITapGestureRecognizer( target:self, action: #selector(UIViewController.dismissKeyboardTouchOutside))
+	   tap.cancelsTouchesInView = false
+	   view.addGestureRecognizer(tap)
+	}
+	
+	@objc private func dismissKeyboardTouchOutside() {
+	   view.endEditing(true)
+	}
 }

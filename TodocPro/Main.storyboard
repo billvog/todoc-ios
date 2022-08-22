@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bcS-4S-3qR">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -18,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rro-yk-Vmz" userLabel="No Todos Stack View">
-                                <rect key="frame" x="79.5" y="421.5" width="255" height="53"/>
+                                <rect key="frame" x="79.666666666666671" y="422" width="254.66666666666663" height="52.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no todos yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vg2-GY-rDv">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="254.66666666666666" height="28.666666666666668"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click the &quot;+&quot; button to create one." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zld-U5-5ii">
-                                        <rect key="frame" x="0.0" y="37" width="255" height="16"/>
+                                        <rect key="frame" x="0.0" y="36.666666666666686" width="254.66666666666666" height="15.666666666666664"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
@@ -58,10 +58,10 @@
                                         </cells>
                                     </collectionView>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYk-Xg-Ulz" userLabel="Tasks Left Count View">
-                                        <rect key="frame" x="156.5" y="689" width="101.5" height="27"/>
+                                        <rect key="frame" x="156.33333333333334" y="689" width="101.66666666666666" height="27"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x tasks left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNh-jx-jxr">
-                                                <rect key="frame" x="10" y="5" width="81.5" height="17"/>
+                                                <rect key="frame" x="10" y="5" width="81.666666666666671" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -106,7 +106,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="My Todos" id="SS3-er-n4n">
-                        <barButtonItem key="leftBarButtonItem" image="info.circle" catalog="system" id="gA1-xb-0Tp" userLabel="InfoBarButtonItem">
+                        <barButtonItem key="leftBarButtonItem" image="info.circle" catalog="system" id="gA1-xb-0Tp" userLabel="Info Bar Button Item">
                             <connections>
                                 <action selector="didTapInfoButton:" destination="Y6W-OH-hqX" id="tuC-DX-ahS"/>
                             </connections>
@@ -117,9 +117,9 @@
                                     <action selector="didTapRemoveDoneTodosButton:" destination="Y6W-OH-hqX" id="buD-IR-nZF"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="plus" catalog="system" id="LBo-33-5gk" userLabel="AddTodoBarButtonItem">
+                            <barButtonItem image="plus" catalog="system" id="LBo-33-5gk" userLabel="Add Todo Bar Button Item">
                                 <connections>
-                                    <action selector="didTapAddTodoButton:" destination="Y6W-OH-hqX" id="QxH-g0-sbS"/>
+                                    <action selector="didTapAddTodoButton:" destination="Y6W-OH-hqX" id="lil-Lr-n68"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -132,11 +132,12 @@
                         <outlet property="todosCollectionView" destination="naH-cX-UM9" id="15s-gk-LvP"/>
                         <outlet property="withTodosView" destination="b9f-hH-JC5" id="8eF-tX-QhV"/>
                         <segue destination="iE9-mR-3IH" kind="show" identifier="AboutTodocSegue" id="GnZ-dy-yIH"/>
+                        <segue destination="wD3-0G-Ilu" kind="showDetail" identifier="AddTodoSegue" id="1IU-ah-Ov2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="666.66666666666674" y="99.776785714285708"/>
+            <point key="canvasLocation" x="661" y="100"/>
         </scene>
         <!--About Todoc Pro-->
         <scene sceneID="cRX-Dt-4aR">
@@ -154,41 +155,172 @@ The mission of our app, is to help you manage your tasks with our simple yet pro
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQf-3h-mB1">
-                                <rect key="frame" x="20" y="227" width="374" height="84"/>
-                                <string key="text">This is product is part of the Voyiadjis PRO App Pack. That said, only members of the Voyiadjis Finance Group (VFG, in short) are allowed to use it. Anyone that's not in the VFG and uses this app is considered ILLEGAL and can be charged with 10 (ten) years jail time.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQU-q6-1XB">
-                                <rect key="frame" x="20" y="331" width="374" height="117"/>
-                                <string key="text">The following message is for those who are not members of the VFG, from Voyiadjis (CEO of Voyiadjis Software):
-You little piece of shit. You better close and remove the app once for ever from your shitty phone and forget it even exists. I don't know how you got access to it but I'm gonna find the little rata and I'm gonna make him pay. Get ready you little fuck. 👿</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Get-eX-eat"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gQU-q6-1XB" firstAttribute="top" secondItem="XQf-3h-mB1" secondAttribute="bottom" constant="20" id="1Az-dm-43A"/>
-                            <constraint firstItem="XQf-3h-mB1" firstAttribute="top" secondItem="Gwy-e9-Wtr" secondAttribute="bottom" constant="20" id="5ND-5g-PEx"/>
                             <constraint firstItem="Gwy-e9-Wtr" firstAttribute="top" secondItem="Get-eX-eat" secondAttribute="top" id="I8N-gU-6nA"/>
                             <constraint firstItem="Get-eX-eat" firstAttribute="trailing" secondItem="Gwy-e9-Wtr" secondAttribute="trailing" constant="20" id="Mq6-BV-mA8"/>
                             <constraint firstItem="Gwy-e9-Wtr" firstAttribute="leading" secondItem="Get-eX-eat" secondAttribute="leading" constant="20" id="Rhz-ZZ-DPJ"/>
-                            <constraint firstItem="gQU-q6-1XB" firstAttribute="leading" secondItem="Get-eX-eat" secondAttribute="leading" constant="20" id="dhB-yn-dJo"/>
-                            <constraint firstItem="Get-eX-eat" firstAttribute="trailing" secondItem="XQf-3h-mB1" secondAttribute="trailing" constant="20" id="lWK-Qb-Hah"/>
-                            <constraint firstItem="Get-eX-eat" firstAttribute="trailing" secondItem="gQU-q6-1XB" secondAttribute="trailing" constant="20" id="o1Z-r7-2d7"/>
-                            <constraint firstItem="XQf-3h-mB1" firstAttribute="leading" secondItem="Get-eX-eat" secondAttribute="leading" constant="20" id="tpY-nC-wNT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About Todoc Pro" id="Qq0-Mf-T9U"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCH-th-1Yf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1643" y="100"/>
+            <point key="canvasLocation" x="1932" y="-289"/>
+        </scene>
+        <!--Add Todo View Controller-->
+        <scene sceneID="CN2-JN-m1b">
+            <objects>
+                <viewController id="wD3-0G-Ilu" customClass="AddTodoViewController" customModule="TodocPro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HLh-TN-DRG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXP-AR-obf">
+                                <rect key="frame" x="10" y="15" width="68.666666666666671" height="31"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapCancelButton:" destination="wD3-0G-Ilu" eventType="touchUpInside" id="iiM-49-irp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evm-rZ-9i3">
+                                <rect key="frame" x="331.66666666666669" y="15" width="72.333333333333314" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title="Add" imagePadding="6">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium"/>
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapAddButton:" destination="wD3-0G-Ilu" eventType="touchUpInside" id="G5z-zX-G6e"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="WLu-rW-yiL">
+                                <rect key="frame" x="20" y="70.333333333333314" width="374" height="551.33333333333348"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Todo Brief Description" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6NU-eh-ANr">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="GvM-hw-Gk0">
+                                        <rect key="frame" x="0.0" y="64.000000000000028" width="374" height="487.33333333333337"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SgB-hj-Xkq" userLabel="Notify Me Switch Container View">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
+                                                <subviews>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" preferredStyle="sliding" translatesAutoresizingMaskIntoConstraints="NO" id="rPy-LL-Qez">
+                                                        <rect key="frame" x="99" y="0.0" width="51" height="31"/>
+                                                        <color key="onTintColor" red="0.99899548289999995" green="0.58442723750000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="didTapNotifyMeSwitch:" destination="wD3-0G-Ilu" eventType="valueChanged" id="jQC-TE-Eys"/>
+                                                        </connections>
+                                                    </switch>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXI-TI-k2P">
+                                                        <rect key="frame" x="0.0" y="5.3333333333333144" width="74" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="dXI-TI-k2P" firstAttribute="centerY" secondItem="SgB-hj-Xkq" secondAttribute="centerY" id="HLp-ee-8md"/>
+                                                    <constraint firstAttribute="height" constant="31" id="Uir-HZ-OIA"/>
+                                                    <constraint firstItem="dXI-TI-k2P" firstAttribute="leading" secondItem="SgB-hj-Xkq" secondAttribute="leading" id="aMY-Du-j8M"/>
+                                                    <constraint firstItem="rPy-LL-Qez" firstAttribute="leading" secondItem="dXI-TI-k2P" secondAttribute="trailing" constant="25" id="ri6-WQ-hYx"/>
+                                                    <constraint firstItem="rPy-LL-Qez" firstAttribute="centerY" secondItem="SgB-hj-Xkq" secondAttribute="centerY" id="tOd-VD-m57"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYz-Rp-tcz">
+                                                <rect key="frame" x="0.0" y="45.999999999999972" width="374" height="441.33333333333326"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will get notified at: 1 January, 15:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bem-IX-O7j">
+                                                        <rect key="frame" x="20" y="25" width="334" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-QW-9ed" userLabel="Seperator View">
+                                                        <rect key="frame" x="0.0" y="62" width="374" height="3"/>
+                                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="3" id="0lY-fh-p2i"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="hfU-KB-nSR">
+                                                        <rect key="frame" x="10" y="65" width="354" height="366.33333333333331"/>
+                                                        <connections>
+                                                            <action selector="didChangeNotifyDateTime:" destination="wD3-0G-Ilu" eventType="valueChanged" id="4kE-Mv-3z7"/>
+                                                        </connections>
+                                                    </datePicker>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemFillColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="lBV-QW-9ed" secondAttribute="trailing" id="2Nu-uu-pzl"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hfU-KB-nSR" secondAttribute="bottom" constant="10" id="A8f-Pv-OLI"/>
+                                                    <constraint firstItem="hfU-KB-nSR" firstAttribute="leading" secondItem="yYz-Rp-tcz" secondAttribute="leading" constant="10" id="UUR-Uv-cxN"/>
+                                                    <constraint firstAttribute="trailing" secondItem="bem-IX-O7j" secondAttribute="trailing" constant="20" id="WQU-2E-KAE"/>
+                                                    <constraint firstItem="bem-IX-O7j" firstAttribute="leading" secondItem="yYz-Rp-tcz" secondAttribute="leading" constant="20" id="X4S-em-4hW"/>
+                                                    <constraint firstItem="lBV-QW-9ed" firstAttribute="top" secondItem="bem-IX-O7j" secondAttribute="bottom" constant="20" id="XQ1-uC-uJb"/>
+                                                    <constraint firstItem="bem-IX-O7j" firstAttribute="top" secondItem="yYz-Rp-tcz" secondAttribute="top" constant="25" id="cGr-HH-rxb"/>
+                                                    <constraint firstItem="lBV-QW-9ed" firstAttribute="leading" secondItem="yYz-Rp-tcz" secondAttribute="leading" id="lik-P6-I6M"/>
+                                                    <constraint firstAttribute="trailing" secondItem="hfU-KB-nSR" secondAttribute="trailing" constant="10" id="q0n-e5-YqH"/>
+                                                    <constraint firstItem="hfU-KB-nSR" firstAttribute="top" secondItem="lBV-QW-9ed" secondAttribute="bottom" id="whb-S5-pCs"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jl-i6-Sgi">
+                                <rect key="frame" x="168" y="20" width="78" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1aE-sS-jkq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3jl-i6-Sgi" firstAttribute="top" secondItem="HLh-TN-DRG" secondAttribute="top" constant="20" id="0uK-cl-V97"/>
+                            <constraint firstItem="1aE-sS-jkq" firstAttribute="trailing" secondItem="evm-rZ-9i3" secondAttribute="trailing" constant="10" id="Chq-VQ-Fq9"/>
+                            <constraint firstItem="PXP-AR-obf" firstAttribute="top" secondItem="HLh-TN-DRG" secondAttribute="top" constant="15" id="Lbb-UJ-deh"/>
+                            <constraint firstItem="WLu-rW-yiL" firstAttribute="leading" secondItem="1aE-sS-jkq" secondAttribute="leading" constant="20" id="Qnv-8K-2Md"/>
+                            <constraint firstItem="WLu-rW-yiL" firstAttribute="top" secondItem="3jl-i6-Sgi" secondAttribute="bottom" constant="30" id="Qyc-TX-LnF"/>
+                            <constraint firstItem="PXP-AR-obf" firstAttribute="leading" secondItem="HLh-TN-DRG" secondAttribute="leading" constant="10" id="Tkz-xO-Nqo"/>
+                            <constraint firstItem="3jl-i6-Sgi" firstAttribute="centerX" secondItem="HLh-TN-DRG" secondAttribute="centerX" id="Y6b-uf-Jty"/>
+                            <constraint firstItem="evm-rZ-9i3" firstAttribute="top" secondItem="HLh-TN-DRG" secondAttribute="top" constant="15" id="npF-MP-KhC"/>
+                            <constraint firstItem="1aE-sS-jkq" firstAttribute="trailing" secondItem="WLu-rW-yiL" secondAttribute="trailing" constant="20" id="sKZ-gP-u3J"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="LWu-Aq-zO9"/>
+                    <connections>
+                        <outlet property="notifyDateContainerView" destination="yYz-Rp-tcz" id="qwO-sj-15f"/>
+                        <outlet property="notifyDatePicker" destination="hfU-KB-nSR" id="TBO-h0-xhr"/>
+                        <outlet property="notifyDateTimeLabel" destination="bem-IX-O7j" id="vf7-pw-kFl"/>
+                        <outlet property="notifyMeSwitch" destination="rPy-LL-Qez" id="pTz-hK-Oyv"/>
+                        <outlet property="todoShortTextField" destination="6NU-eh-ANr" id="AIp-La-QVZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ihr-y2-8oS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1932" y="409"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jYQ-ZN-0qH">
@@ -216,8 +348,17 @@ You little piece of shit. You better close and remove the app once for ever from
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
