@@ -229,6 +229,8 @@ extension ViewController {
 			return
 		}
 		
+		TodoNotificationManager.removePendingNotificationForTodo(todoId: todoId)
+		
 		todos.removeAll { todo in todo.id == todoId }
 	}
 	
