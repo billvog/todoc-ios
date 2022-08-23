@@ -130,6 +130,7 @@
                         <outlet property="withTodosView" destination="b9f-hH-JC5" id="8eF-tX-QhV"/>
                         <segue destination="iE9-mR-3IH" kind="show" identifier="AboutTodocSegue" id="GnZ-dy-yIH"/>
                         <segue destination="wD3-0G-Ilu" kind="showDetail" identifier="AddTodoSegue" id="1IU-ah-Ov2"/>
+                        <segue destination="cfg-NB-1l9" kind="showDetail" identifier="EditTodoSegue" id="Qs9-N9-DU6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -165,7 +166,7 @@ The mission of our app, is to help you manage your tasks with our simple yet pro
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCH-th-1Yf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="-289"/>
+            <point key="canvasLocation" x="1875" y="-598"/>
         </scene>
         <!--Add Todo View Controller-->
         <scene sceneID="CN2-JN-m1b">
@@ -234,7 +235,7 @@ The mission of our app, is to help you manage your tasks with our simple yet pro
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shedule a local notification to remind you." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eV-Uv-ZYT">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule a local notification to remind you." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eV-Uv-ZYT">
                                                                 <rect key="frame" x="0.0" y="25" width="305" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -341,7 +342,182 @@ The mission of our app, is to help you manage your tasks with our simple yet pro
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ihr-y2-8oS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1931.8840579710147" y="408.48214285714283"/>
+            <point key="canvasLocation" x="1875" y="100"/>
+        </scene>
+        <!--Edit Todo View Controller-->
+        <scene sceneID="pmL-3X-6bd">
+            <objects>
+                <viewController id="cfg-NB-1l9" customClass="EditTodoViewController" customModule="TodocPro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cRu-0m-jVF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZQ-nb-IXO">
+                                <rect key="frame" x="10" y="15" width="68.666666666666671" height="31"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapCancelButton:" destination="cfg-NB-1l9" eventType="touchUpInside" id="wRs-Gc-ME7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQW-vT-ROV">
+                                <rect key="frame" x="344" y="15" width="60" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapDoneButton:" destination="cfg-NB-1l9" eventType="touchUpInside" id="LZ7-PH-YWF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6P-bP-aaU">
+                                <rect key="frame" x="170.33333333333334" y="20" width="73.333333333333343" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="cyv-Qx-ipL">
+                                <rect key="frame" x="20" y="70.333333333333314" width="374" height="552.33333333333348"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Todo Brief Description" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Zc5-5A-QDv">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" id="7ea-3F-g48">
+                                        <rect key="frame" x="0.0" y="63.999999999999972" width="374" height="488.33333333333326"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msy-KZ-eMM" userLabel="Notify Me Switch Container View">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLV-Gx-akn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="305" height="45"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVR-F9-kHP">
+                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="25"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="25" id="ueK-Ll-2kQ"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule a local notification to remind you." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nz-4D-RLi">
+                                                                <rect key="frame" x="0.0" y="25" width="305" height="20"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="bVR-F9-kHP" firstAttribute="leading" secondItem="jLV-Gx-akn" secondAttribute="leading" id="1y9-rN-xDZ"/>
+                                                            <constraint firstItem="8nz-4D-RLi" firstAttribute="top" secondItem="bVR-F9-kHP" secondAttribute="bottom" id="Nkc-XQ-pdP"/>
+                                                            <constraint firstItem="bVR-F9-kHP" firstAttribute="top" secondItem="jLV-Gx-akn" secondAttribute="top" id="NsR-xy-RRP"/>
+                                                            <constraint firstAttribute="trailing" secondItem="bVR-F9-kHP" secondAttribute="trailing" id="W9O-2j-e8G"/>
+                                                            <constraint firstAttribute="bottom" secondItem="8nz-4D-RLi" secondAttribute="bottom" id="bv5-mh-8jG"/>
+                                                            <constraint firstAttribute="trailing" secondItem="8nz-4D-RLi" secondAttribute="trailing" id="f4v-xM-tjd"/>
+                                                            <constraint firstItem="8nz-4D-RLi" firstAttribute="leading" secondItem="jLV-Gx-akn" secondAttribute="leading" id="tch-lg-j3I"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" preferredStyle="sliding" translatesAutoresizingMaskIntoConstraints="NO" id="lFd-xN-bqd">
+                                                        <rect key="frame" x="325" y="7" width="51" height="31"/>
+                                                        <color key="onTintColor" red="0.99899548289999995" green="0.58442723750000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="didTapNotifyMeSwitch:" destination="cfg-NB-1l9" eventType="valueChanged" id="6GG-Gp-zSe"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="jLV-Gx-akn" firstAttribute="top" secondItem="Msy-KZ-eMM" secondAttribute="top" id="KrB-fb-PJM"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jLV-Gx-akn" secondAttribute="bottom" id="RiN-ur-csw"/>
+                                                    <constraint firstItem="jLV-Gx-akn" firstAttribute="leading" secondItem="Msy-KZ-eMM" secondAttribute="leading" id="WRV-a1-k6A"/>
+                                                    <constraint firstItem="lFd-xN-bqd" firstAttribute="centerY" secondItem="Msy-KZ-eMM" secondAttribute="centerY" id="Xg3-vB-pWX"/>
+                                                    <constraint firstItem="lFd-xN-bqd" firstAttribute="leading" secondItem="jLV-Gx-akn" secondAttribute="trailing" constant="20" id="mt7-jn-3cy"/>
+                                                    <constraint firstAttribute="trailing" secondItem="lFd-xN-bqd" secondAttribute="trailing" id="w6l-DT-mXJ"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbe-Zh-2ET">
+                                                <rect key="frame" x="0.0" y="56.999999999999972" width="374" height="431.33333333333326"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will get notified at: 1 January, 15:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keJ-eW-2km">
+                                                        <rect key="frame" x="0.0" y="25" width="374" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wia-j1-0OS" userLabel="Seperator View">
+                                                        <rect key="frame" x="0.0" y="62" width="374" height="3"/>
+                                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="3" id="NvH-4s-QBG"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="tKg-gC-dR5">
+                                                        <rect key="frame" x="10" y="64.999999999999972" width="354" height="366.33333333333326"/>
+                                                        <connections>
+                                                            <action selector="didChangeNotifyDateTime:" destination="cfg-NB-1l9" eventType="valueChanged" id="eDU-87-DNl"/>
+                                                        </connections>
+                                                    </datePicker>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemFillColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="wia-j1-0OS" firstAttribute="leading" secondItem="wbe-Zh-2ET" secondAttribute="leading" id="4We-NU-t2v"/>
+                                                    <constraint firstAttribute="trailing" secondItem="wia-j1-0OS" secondAttribute="trailing" id="WcG-tv-Hox"/>
+                                                    <constraint firstItem="tKg-gC-dR5" firstAttribute="top" secondItem="wia-j1-0OS" secondAttribute="bottom" id="WhH-VI-KYc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="keJ-eW-2km" secondAttribute="trailing" id="f1T-lt-EVw"/>
+                                                    <constraint firstItem="tKg-gC-dR5" firstAttribute="leading" secondItem="wbe-Zh-2ET" secondAttribute="leading" constant="10" id="i9m-Ka-zMc"/>
+                                                    <constraint firstItem="keJ-eW-2km" firstAttribute="top" secondItem="wbe-Zh-2ET" secondAttribute="top" constant="25" id="ieP-Vf-LUs"/>
+                                                    <constraint firstItem="wia-j1-0OS" firstAttribute="top" secondItem="keJ-eW-2km" secondAttribute="bottom" constant="20" id="vSP-dj-cxr"/>
+                                                    <constraint firstItem="keJ-eW-2km" firstAttribute="leading" secondItem="wbe-Zh-2ET" secondAttribute="leading" id="wSW-R0-Suf"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tKg-gC-dR5" secondAttribute="trailing" constant="10" id="xuN-pG-c51"/>
+                                                    <constraint firstAttribute="bottom" secondItem="tKg-gC-dR5" secondAttribute="bottom" id="zrP-oW-Y0I"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Igv-Db-3Y6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OZQ-nb-IXO" firstAttribute="leading" secondItem="cRu-0m-jVF" secondAttribute="leading" constant="10" id="0Vj-0v-xmT"/>
+                            <constraint firstItem="OZQ-nb-IXO" firstAttribute="top" secondItem="cRu-0m-jVF" secondAttribute="top" constant="15" id="44v-tA-fWH"/>
+                            <constraint firstItem="R6P-bP-aaU" firstAttribute="top" secondItem="cRu-0m-jVF" secondAttribute="top" constant="20" id="A11-wC-cFA"/>
+                            <constraint firstItem="R6P-bP-aaU" firstAttribute="centerX" secondItem="cRu-0m-jVF" secondAttribute="centerX" id="LRj-gi-CmZ"/>
+                            <constraint firstItem="Igv-Db-3Y6" firstAttribute="trailing" secondItem="cyv-Qx-ipL" secondAttribute="trailing" constant="20" id="VzK-If-zxG"/>
+                            <constraint firstItem="cyv-Qx-ipL" firstAttribute="leading" secondItem="Igv-Db-3Y6" secondAttribute="leading" constant="20" id="WYU-Cg-Van"/>
+                            <constraint firstAttribute="trailing" secondItem="kQW-vT-ROV" secondAttribute="trailing" constant="10" id="jCK-ok-ZUY"/>
+                            <constraint firstItem="kQW-vT-ROV" firstAttribute="top" secondItem="cRu-0m-jVF" secondAttribute="top" constant="15" id="mwU-LW-Bq4"/>
+                            <constraint firstItem="cyv-Qx-ipL" firstAttribute="top" secondItem="R6P-bP-aaU" secondAttribute="bottom" constant="30" id="uiq-vh-9qM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bdc-Oc-9k1"/>
+                    <connections>
+                        <outlet property="notifyDateContainerView" destination="wbe-Zh-2ET" id="z94-qQ-H2R"/>
+                        <outlet property="notifyDatePicker" destination="tKg-gC-dR5" id="d7a-Ay-2In"/>
+                        <outlet property="notifyDateTimeLabel" destination="keJ-eW-2km" id="mCw-pA-ONG"/>
+                        <outlet property="notifyMeSwitch" destination="lFd-xN-bqd" id="nNd-EE-kKO"/>
+                        <outlet property="todoShortTextField" destination="Zc5-5A-QDv" id="ImA-rs-ld1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p2J-Ll-D3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1874" y="832"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jYQ-ZN-0qH">

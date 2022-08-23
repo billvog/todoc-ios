@@ -11,7 +11,10 @@ class ViewController: UIViewController {
 
 	// Segues
 	let AddTodoSegueIdentifier = "AddTodoSegue"
+	let EditTogoSegueIdentifier = "EditTodoSegue"
 	let AboutTodocSegueIdentifier = "AboutTodocSegue"
+	
+	var editingTodoIndex: Int?
 	
 	@IBOutlet weak var withTodosView: UIView!
 	@IBOutlet weak var todosCollectionView: UICollectionView!
@@ -46,6 +49,16 @@ class ViewController: UIViewController {
 		todosCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
 	}
 	
+	override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+		if (identifier == EditTogoSegueIdentifier) {
+			if (editingTodoIndex == nil) {
+				return false
+			}
+		}
+		
+		return true
+	}
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if (segue.identifier == AddTodoSegueIdentifier) {
 			guard let addTodoVC = segue.destination as? AddTodoViewController else {
@@ -58,6 +71,28 @@ class ViewController: UIViewController {
 				}
 				
 				let ok = strongSelf.addTodo(withModel: newTodo)
+				if (ok) {
+					strongSelf.didTodoListUpdated()
+				}
+				
+				return ok
+			}
+		}
+		else if (segue.identifier == EditTogoSegueIdentifier) {
+			guard let editTodoVC = segue.destination as? EditTodoViewController else {
+				return
+			}
+			
+			let todo = todos[editingTodoIndex!]
+			editingTodoIndex = nil
+			
+			editTodoVC.loadTodo(todo)
+			editTodoVC.saveTodoCallback = { [weak self] newTodo in
+				guard let strongSelf = self else {
+					return false
+				}
+				
+				let ok = strongSelf.updateTodo(withId: newTodo.id, newValues: newTodo)
 				if (ok) {
 					strongSelf.didTodoListUpdated()
 				}
@@ -156,7 +191,7 @@ class ViewController: UIViewController {
 	}
 }
 
-// Database
+// Interaction with database and todo utils
 extension ViewController {
 	private func setupDatabase() {
 		let database = SQLiteDatabase.sharedInstance
@@ -235,7 +270,20 @@ extension ViewController {
 	}
 	
 	private func updateTodo(withId todoId: String, newValues: Todo) -> Bool {
-		guard let updatedTodo = SQLiteCommands.updateTodo(withId: todoId, newTodoValues: newValues) else {
+		var newTodo = newValues
+		
+		// update notification
+		if (newTodo.notify) {
+			if (newTodo.done) {
+				newTodo.notify = false
+				TodoNotificationManager.removePendingNotificationForTodo(todoId: newTodo.id)
+			}
+			else if (newTodo.notifyDateTime > Date.now) {
+				self.addNotificationForTodo(withId: newTodo.id, completion: nil)
+			}
+		}
+		
+		guard let updatedTodo = SQLiteCommands.updateTodo(withId: todoId, newTodoValues: newTodo) else {
 			showError(withTitle: "Task Failed", message: "Todoc encountered an error trying to update this todo.")
 			return false
 		}
@@ -246,6 +294,7 @@ extension ViewController {
 		}
 		
 		todos[todoIndex] = updatedTodo
+		
 		return true
 	}
 	
@@ -260,15 +309,6 @@ extension ViewController {
 			return false
 		}
 		
-		if (todo.notify) {
-			if (todo.done) {
-				TodoNotificationManager.removePendingNotificationForTodo(todoId: todo.id)
-			}
-			else if (todo.notifyDateTime > Date.now) {
-				self.addNotificationForTodo(withId: todo.id, completion: nil)
-			}
-		}
-		
 		return true
 	}
 }
@@ -277,6 +317,20 @@ extension ViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 		return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] (action) -> UIMenu in
 			let index = indexPath.item
+			
+			let editAction = UIAction(
+				title: "Edit",
+				image: .init(systemName: "pencil"),
+				identifier: nil,
+				discoverabilityTitle: nil,
+				state: .off
+			) { [weak self] _ in
+				guard let strongSelf = self else { return }
+				strongSelf.editingTodoIndex = index
+				if (strongSelf.shouldPerformSegue(withIdentifier: strongSelf.EditTogoSegueIdentifier, sender: strongSelf)) {
+					strongSelf.performSegue(withIdentifier: strongSelf.EditTogoSegueIdentifier, sender: strongSelf)
+				}
+			}
 			
 			let deleteAction = UIAction(
 				title: "Delete",
@@ -294,7 +348,7 @@ extension ViewController: UICollectionViewDelegate {
 				image: nil,
 				identifier: nil,
 				options: .displayInline,
-				children: [deleteAction]
+				children: [editAction, deleteAction]
 			)
 		}
 	}
