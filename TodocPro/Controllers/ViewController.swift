@@ -87,16 +87,13 @@ class ViewController: UIViewController {
 	private func updateTodoEvents() {
 		todos = todos.map { [weak self] _todo in
 			var todo = _todo
-			
 			todo.onDoneChanged = { [weak self] isDone in
 				guard let strongSelf = self else { return }
 				
-				var updatedTodo = _todo
-				updatedTodo.done = isDone
-				
-				strongSelf.updateTodo(withId: todo.id, newValues: updatedTodo)
-				strongSelf.didDoneTodosChanged()
-				strongSelf.didTodoListUpdated()
+				if (strongSelf.markTodoAsDone(forTodoId: todo.id, isDone: isDone)) {
+					strongSelf.performHapticFeedbackWhenTodoIsDone()
+					strongSelf.didTodoListUpdated()
+				}
 			}
 			
 			return todo
@@ -105,9 +102,7 @@ class ViewController: UIViewController {
 	
 	// Perform haptic feedback when toggling a todo as "done".
 	// If all todos are done, perform a haptic feedback that's heavier.
-	// I'm having a different function for that and putting in inside didTodoListUpdated(),
-	// so it responds as fast as possible and doesn't wait for the list to be refreshed.
-	private func didDoneTodosChanged() {
+	private func performHapticFeedbackWhenTodoIsDone() {
 		let totalTodosCount = todos.count
 		let doneTodosCount = todos.filter { todo in
 			todo.done == true
@@ -179,29 +174,49 @@ extension ViewController {
 		didTodoListUpdated()
 	}
 	
+	private func addNotificationForTodo(withId todoId: String, completion: ((Bool) -> Void)?) {
+		guard var todo = todos.filter({ todo in todo.id == todoId }).first else {
+			completion?(false)
+			return
+		}
+		
+		if (!todo.notify) {
+			completion?(false)
+			return
+		}
+		
+		TodoNotificationManager.addNotificationForTodo(todo: todo) { [weak self] error in
+			guard let strongSelf = self else {
+				completion?(false)
+				return
+			}
+			
+			if (error != nil) {
+				strongSelf.showError(
+					withTitle: "Task Failed",
+					message: "Todoc encountered an error trying to schedule a local notification for the newly created todo.\nPlease, make sure you have given Todoc permission in Settings."
+				)
+				
+				// if notification fails update todo in db to set notify to false
+				todo.notify = false
+				let _ = strongSelf.updateTodo(withId: todo.id, newValues: todo)
+			}
+			
+			completion?(error == nil)
+		}
+	}
+	
 	private func addTodo(withModel todo: Todo) -> Bool {
-		var newTodo = SQLiteCommands.createTodo(withTodoModel: todo)
-		if (newTodo == nil) {
+		guard let newTodo = SQLiteCommands.createTodo(withTodoModel: todo) else {
 			showError(withTitle: "Task Failed", message: "Todoc encountered an error trying to create this todo.")
 			return false
 		}
 		
-		todos.append(newTodo!)
+		todos.append(newTodo)
 		
 		// add notification
-		if (newTodo!.notify) {
-			TodoNotificationManager.addNotificationForTodo(todo: newTodo!) { [weak self] error in
-				if (error != nil) {
-					self?.showError(
-						withTitle: "Task Failed",
-						message: "Todoc encountered an error trying to schedule a local notification for the newly created todo.\nPlease, make sure you have given Todoc permission in Settings."
-					)
-					
-					// if notification fails update todo in db to set notify to false
-					newTodo!.notify = false
-					self?.updateTodo(withId: newTodo!.id, newValues: newTodo!)
-				}
-			}
+		if (newTodo.notify) {
+			addNotificationForTodo(withId: newTodo.id, completion: nil)
 		}
 		
 		return true
@@ -217,20 +232,42 @@ extension ViewController {
 		todos.removeAll { todo in todo.id == todoId }
 	}
 	
-	private func updateTodo(withId todoId: String, newValues: Todo) {
-		let updatedTodo = SQLiteCommands.updateTodo(withId: todoId, newTodoValues: newValues)
-		if (updatedTodo == nil) {
+	private func updateTodo(withId todoId: String, newValues: Todo) -> Bool {
+		guard let updatedTodo = SQLiteCommands.updateTodo(withId: todoId, newTodoValues: newValues) else {
 			showError(withTitle: "Task Failed", message: "Todoc encountered an error trying to update this todo.")
-			return
+			return false
 		}
 		
-		let todoIndex = todos.firstIndex { todo in todo.id == todoId }
-		if (todoIndex == nil) {
-		   print("Todo with id: \(todoId) not found in todos")
-		   return
+		guard let todoIndex = todos.firstIndex(where: { todo in todo.id == todoId }) else {
+			print("Todo with id: \(todoId) not found in todos")
+			return false
 		}
 		
-		todos[todoIndex!] = updatedTodo!
+		todos[todoIndex] = updatedTodo
+		return true
+	}
+	
+	private func markTodoAsDone(forTodoId todoId: String, isDone: Bool) -> Bool {
+		guard var todo = todos.filter({ todo in todo.id == todoId }).first else {
+			return false
+		}
+		
+		todo.done = isDone
+		
+		if (!updateTodo(withId: todoId, newValues: todo)) {
+			return false
+		}
+		
+		if (todo.notify) {
+			if (todo.done) {
+				TodoNotificationManager.removePendingNotificationForTodo(todoId: todo.id)
+			}
+			else if (todo.notifyDateTime > Date.now) {
+				self.addNotificationForTodo(withId: todo.id, completion: nil)
+			}
+		}
+		
+		return true
 	}
 }
 

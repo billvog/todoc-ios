@@ -10,6 +10,7 @@
 		3ECFE8B53AAE3C757358ECA6 /* Pods_TodocPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A344ABD31867ADC1AE7FF5EF /* Pods_TodocPro.framework */; };
 		710B878428B2B3200022C417 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B878328B2B3200022C417 /* AddTodoViewController.swift */; };
 		710B878828B2D12A0022C417 /* TodoNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B878728B2D12A0022C417 /* TodoNotificationManager.swift */; };
+		7121D2B728B4E8C5009645B3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121D2B628B4E8C5009645B3 /* UIView.swift */; };
 		7160D2D828AF9A83003FCFCC /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160D2D728AF9A83003FCFCC /* Todo.swift */; };
 		7160D2DB28AF9B82003FCFCC /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160D2DA28AF9B82003FCFCC /* SQLiteDatabase.swift */; };
 		7160D2DD28AF9C85003FCFCC /* SQLiteCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160D2DC28AF9C85003FCFCC /* SQLiteCommands.swift */; };
@@ -30,6 +31,7 @@
 		597D983693E4EB98E0614416 /* Pods-TodocPro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodocPro.release.xcconfig"; path = "Target Support Files/Pods-TodocPro/Pods-TodocPro.release.xcconfig"; sourceTree = "<group>"; };
 		710B878328B2B3200022C417 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		710B878728B2D12A0022C417 /* TodoNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoNotificationManager.swift; sourceTree = "<group>"; };
+		7121D2B628B4E8C5009645B3 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		7160D2D728AF9A83003FCFCC /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		7160D2DA28AF9B82003FCFCC /* SQLiteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDatabase.swift; sourceTree = "<group>"; };
 		7160D2DC28AF9C85003FCFCC /* SQLiteCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteCommands.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				71FE522E28AFB1660034AD88 /* UIViewController.swift */,
 				717452F828B2250E009503E2 /* NSAttributedString.swift */,
+				7121D2B628B4E8C5009645B3 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7121D2B728B4E8C5009645B3 /* UIView.swift in Sources */,
 				710B878828B2D12A0022C417 /* TodoNotificationManager.swift in Sources */,
 				71A27D8028AE5F2D00419740 /* TodoCollectionViewCell.swift in Sources */,
 				7160D2D828AF9A83003FCFCC /* Todo.swift in Sources */,

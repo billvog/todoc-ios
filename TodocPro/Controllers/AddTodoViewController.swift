@@ -33,7 +33,7 @@ class AddTodoViewController: UIViewController {
 		guard let todoShortText = todoShortTextField.text else { return }
 		
 		if (todoShortText.isEmpty) {
-			self.showError(withTitle: "Task Failed", message: "Please fill in the \"Todo Brief Description\" field to proceed.")
+			self.showError(withTitle: "Task Failed", message: "Please fill in a short description for the todo.")
 			return
 		}
 		
@@ -73,13 +73,14 @@ class AddTodoViewController: UIViewController {
 				}
 				else {
 					DispatchQueue.main.async { [weak self] in
-						self?.notifyDateContainerView.isHidden = false
+						self?.notifyDateContainerView.setIsHidden(false, animated: true)
 					}
 				}
 			}
 		}
 		else {
-			notifyDateContainerView.isHidden = true
+			notifyDateContainerView.setIsHidden(true, animated: true)
+			//notifyDateContainerView.isHidden = true
 		}
 	}
 	

@@ -8,7 +8,7 @@
 import UIKit
 
 class TodoNotificationManager {
-	static func requestAuthorization(completion: @escaping  (Bool) -> Void) {
+	static func requestAuthorization(completion: @escaping (Bool) -> Void) {
 		UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _  in
 			completion(granted)
 		}
@@ -42,5 +42,13 @@ class TodoNotificationManager {
 		notificationCenter.add(request) { (error) in
 			completion(error)
 		}
+	}
+	
+	static func removePendingNotificationForTodo(todoId: String) {
+		UNUserNotificationCenter
+			.current()
+			.removePendingNotificationRequests(
+				withIdentifiers: [todoId]
+			)
 	}
 }
